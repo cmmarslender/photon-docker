@@ -1,0 +1,20 @@
+# Based on this: https://ethitter.com/2017/04/running-a-private-photon-instance/
+# Repo is here: https://code.svn.wordpress.org/photon/
+# Repo View Here: https://code.trac.wordpress.org/browser/photon/
+version: '3'
+services:
+  phpfpm:
+    build: ./dockerfiles/phpfpm
+    volumes:
+      - "./config/php-fpm/php.ini:/usr/local/etc/php/php.ini"
+    restart: always
+  nginx:
+    depends_on:
+      - phpfpm
+    ports:
+      - "80:80"
+      - "443:443"
+    build: ./dockerfiles/nginx
+    volumes:
+      - "./logs/nginx:/var/log/nginx"
+    restart: always
