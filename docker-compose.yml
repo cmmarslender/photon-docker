@@ -4,7 +4,7 @@
 version: '3'
 services:
   phpfpm:
-    build: ./dockerfiles/phpfpm
+    image: cmmarslender/photon-php
     volumes:
       - "./config/php-fpm/php.ini:/usr/local/etc/php/php.ini"
     restart: always
@@ -14,7 +14,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    build: ./dockerfiles/nginx
+    image: cmmarslender/photon-nginx
     volumes:
       - "./logs/nginx:/var/log/nginx"
     restart: always
