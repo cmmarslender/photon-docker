@@ -28,3 +28,4 @@ scss-lint-report.xml
 config.codekit
 
 /logs/*
+docker-compose.override.yml
